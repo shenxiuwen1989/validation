@@ -8,8 +8,6 @@
  */
 package com.sxw.validator;
 
-import com.kye.serviceaggregator.constant.Const;
-
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.*;
@@ -19,11 +17,15 @@ import java.lang.annotation.*;
 @Target( { ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface StringSplitLength {
+    /**
+     * 默认最大长度
+     */
+    public static final int DEFAULT_MAX_LENGTH = 20;
     
-    String message() default "长度不能超过"+Const.DEFAULT_MAX_LENGTH;
+    String message() default "长度不能超过"+DEFAULT_MAX_LENGTH;
     String separator() default ",";
     boolean allowNullable() default true;
-    int max() default Const.DEFAULT_MAX_LENGTH;
+    int max() default DEFAULT_MAX_LENGTH;
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
     
